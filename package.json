@@ -1,0 +1,16 @@
+{
+  "name": "previouspapers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nishi kant kumar",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^4.0.1",
+    "ejs-mate": "^4.0.0",
+    "express": "^5.2.1"
+  }
+}

@@ -1,0 +1,47 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    background-color: #F6F0D7;
+}
+.logo-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
+    font-family: "Ubuntu", sans-serif;
+}
+.logo-name p{
+    margin: 0;
+    font-weight: 500;
+}
+.logo-name p a{
+    text-decoration: none;
+    color: black;
+}
+.logo-name p a:hover{
+    text-decoration: underline;
+}
+.image img{
+    height: 65px;
+    margin-right: 10px;
+    opacity: 0.7;
+    border-radius: 50%;
+}
+.options{
+    display: flex;
+    padding: 1rem;
+}
+.option{
+    margin: 5px;
+}
+
+.option a{
+    margin: 5px;
+    font-size: 19px;
+    color: black;
+    text-decoration: none;
+    opacity: 0.7;
+}
+.option a:hover{
+    opacity: 1;
+}

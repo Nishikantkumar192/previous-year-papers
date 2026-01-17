@@ -1,0 +1,22 @@
+.home-container{
+    flex: 1;
+    background-color: #9CAB84;
+    height: 100vh;
+}
+.submit-btn{
+    background-color: red;
+}
+.Heading{
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 45px;
+    width: 700px;
+    padding:1rem 0.5rem 1rem 3rem;
+}
+.info{
+    display: flex;
+    justify-content: space-between;
+}
+.portal-offer{
+    flex: 1;
+}
