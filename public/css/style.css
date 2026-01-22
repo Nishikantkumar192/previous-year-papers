@@ -2,6 +2,7 @@ body{
     margin: 0;
     padding: 0;
     font-family: "Roboto Slab", serif;
+    background-color: #9CAB84;
 }
 .container{
     display: flex;
@@ -21,11 +22,12 @@ body{
 .home{
     display: flex;
     flex-direction: column;
+    max-width: 700px;
     padding:1rem 0.5rem 1rem 3rem;
 }
 .Heading p {
   font-size: 3rem;          
-  font-weight: 800;
+  font-weight: 500;
   background: linear-gradient(
      90deg,
     #2f6f4e,   
@@ -57,12 +59,11 @@ body{
     height: 50px;
 }
 .home .btn button{
-    font-style: italic;
     padding: 0.5rem 1rem;
     font-weight: 400;
     border-radius: 32px;
-    box-shadow: #A8DF8E 3px 2px 7px 2px;
     width: 200px;
+    font-size: 15px;
     border: none;
 }
 .home .btn button:hover{
@@ -70,10 +71,10 @@ body{
     height: 40px;
     width: 190px;
     margin-bottom: 20px;
-    box-shadow: #166534 8px 5px 9px 0;
+    box-shadow:6px 5px 9px 0 black;
 }
 .guidance{
-    padding: 3rem;
+    padding: 1rem;
     flex: 1;
 }
 .portal-offer{
@@ -89,6 +90,17 @@ body{
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
+    }
+}
+@media (max-width:630px) {
+    .home p{
+        font-size: 2rem;
+    }
+    .home span{
+        font-size: 0.7rem;
+    }
+    .logo-name p{
+        font-size: 0.8rem;
     }
 }
 .contact-query{
@@ -115,7 +127,8 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 2.5rem;
+    margin-left: 1rem;
+    padding: 0.3rem;
 }
 
 .logo-name p{
@@ -165,6 +178,13 @@ body{
 @media (max-width:800px) {
     .footer-container .contribution{
         display: none;
+    }
+}
+@media (max-width:350px) {
+    .footer-container{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 .footer-container{

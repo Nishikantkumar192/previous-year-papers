@@ -48,3 +48,16 @@ app.post("/results/new",upload.single("result[image]"),(req,res)=>{
     console.log(req.file);
     res.send("successful");
 })
+
+app.get("/user/login",(req,res)=>{
+    res.render("user/login.ejs");
+})
+app.post("/user/login",(req,res)=>{
+    res.send("successful");
+})
+app.get("/user/signup",(req,res)=>{
+    res.render("user/signup");
+})
+app.post("/user/signup",(req,res)=>{
+    res.send("its working");
+})

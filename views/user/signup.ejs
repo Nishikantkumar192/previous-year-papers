@@ -1,0 +1,23 @@
+<%- layout("layouts/boilerplate.ejs")%>
+<div class="form-details">
+<form method="post" action="/user/signup">
+    <h1>Create an account to access previous year question papers</h1>
+    <div class="form-inputs">
+        <div>
+        <label for="username">Username</label><br>
+        <input type="text" placeholder="username" name="user[username]" id="username" required>
+    </div>
+    <div>
+        <label for="email">Email</label><br>
+        <input type="text" placeholder="email-id" name="user[eamil]" id="email" required>
+    </div>
+    <div>
+        <label for="password">Password</label><br>
+        <input type="password" placeholder="password" name="user[password]" id="password" required>
+    </div>
+    <div class="search-btn">
+        <button>Sign-up</button>
+    </div>
+    </div>
+</form>
+</div>

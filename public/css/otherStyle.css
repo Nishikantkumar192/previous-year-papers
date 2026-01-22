@@ -4,16 +4,33 @@
     line-height: 25px;
 }
 .How-to-use{
-    padding: 2rem;
+    padding: 1rem;
+    margin: 3rem;
+    border-radius: 16px;
+    background-color: #8F9F73 ;
+
+}
+.How-to-use h2{
+    color: #492828;
+    margin-bottom: 0;
+}
+.steps{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.step span{
+    font-weight: 500;
+    color: #5A3E2B;
 }
 .step{
     border: 1px solid black;
     padding: 1rem;
-    margin:0 20px;
-    align-items: center;
+    margin: 20px;
     border-radius: 10px;
-    height: 100px;
+    width: 300px;
+    box-shadow: 0 0 4px 0 black;
 }
 .useCaseHeading{
     margin: 0;
@@ -22,18 +39,21 @@
 .form-details{
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 2rem;
+}
+.form-details h1{
+    padding:0 1rem;
 }
 .form-inputs{
     background-color:#ececec65;
     border: 1px solid #492828;
-    padding: 2rem;
+    padding: 3rem 0;
     border-radius: 32px;
-    margin: 0 15px;
+    margin: 0 25px;
     text-align: center;
 }
 .form-details input,select{
-    width: 50%;
+    width: 65%;
     margin-bottom: 20px;
     height: 25px;
     border-radius: 5px;
@@ -41,8 +61,14 @@
     outline: none;
     border: none;
 }
+.form-details input:focus{
+    box-shadow: 0 0 7px 0 black;
+}
+.form-details select:focus{
+    box-shadow: 0 0 7px 0 black;
+}
 .search-btn button{
-    width: 200px;
+    width: 150px;
     height: 30px;
     border-radius: 5px;
     border: none;
