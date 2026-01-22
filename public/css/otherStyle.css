@@ -1,0 +1,53 @@
+.objective{
+    padding: 1rem;
+    margin: 1rem;
+    line-height: 25px;
+}
+.How-to-use{
+    padding: 2rem;
+    display: flex;
+}
+.step{
+    border: 1px solid black;
+    padding: 1rem;
+    margin:0 20px;
+    align-items: center;
+    border-radius: 10px;
+    height: 100px;
+}
+.useCaseHeading{
+    margin: 0;
+}
+/* Form style */
+.form-details{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.form-inputs{
+    background-color:#ececec65;
+    border: 1px solid #492828;
+    padding: 2rem;
+    border-radius: 32px;
+    margin: 0 15px;
+    text-align: center;
+}
+.form-details input,select{
+    width: 50%;
+    margin-bottom: 20px;
+    height: 25px;
+    border-radius: 5px;
+    text-align: center;
+    outline: none;
+    border: none;
+}
+.search-btn button{
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(4, 51, 4);
+    color: white;
+    font-size: 1rem;    
+    cursor: pointer;
+}

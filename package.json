@@ -9,8 +9,14 @@
   "author": "Nishi kant kumar",
   "license": "ISC",
   "dependencies": {
+    "cloudinary": "^1.41.3",
+    "dotenv": "^17.2.3",
     "ejs": "^4.0.1",
     "ejs-mate": "^4.0.0",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^9.1.4",
+    "multer": "^2.0.2",
+    "multer-storage-cloudinary": "^4.0.0"
   }
 }

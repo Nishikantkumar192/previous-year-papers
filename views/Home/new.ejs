@@ -1,0 +1,57 @@
+<%- layout("layouts/boilerplate.ejs")%>
+<div class="form-details">
+<form method="post" action="/results/new" enctype="multipart/form-data">
+    <div class="form-inputs">
+    <h1>Help fellow students by sharing authentic exam paper.</h1>
+           <div>
+        <label for="year">Year</label><br>
+        <input type="number" placeholder="2025" name="result[year]" id="year" required>
+    </div>
+    <div>
+        <label for="semester">Semester</label><br>
+        <select name="result[semester]" id="semester" required>
+            <option value="sem">Select Semester</option>
+            <option value="1st">1</option>
+            <option value="1st">2</option>
+            <option value="1st">3</option>
+            <option value="1st">4</option>
+            <option value="1st">5</option>
+            <option value="1st">6</option>
+            <option value="1st">7</option>
+            <option value="1st">8</option>
+        </select>
+    </div>
+   <div>
+        <label for="term">Mid/End Term</label><br>
+        <select name="result[term]" id="term" required>
+            <option value="select">Select Term</option>
+            <option value="mid">mid</option>
+            <option value="end">end</option>
+        </select>
+    </div>
+   <div>
+        <label for="branch">Branch</label><br>
+        <select name="result[branch]" id="branch">
+            <option value="choose">Select Your Branch</option>
+            <option value="CSE">CSE</option>
+            <option value="ECE">ECE</option>
+            <option value="EE">EE</option>
+            <option value="ME">ME</option>
+            <option value="CE">CE</option>
+            <option value="BIO">BIO-TECH</option>
+        </select>
+    </div>
+    <div>
+        <label for="subject">Subject</label><br>
+        <input type="text" placeholder="As Mentioned in Course" name="result[subject]" id="subject" required>
+    </div>
+    <div>
+        <label for="image">Image</label><br>
+        <input type="file" name="result[image]" id="image" class="file-input" required>
+    </div>
+    <div class="search-btn">
+        <button>Search</button>
+    </div>
+    </div>
+</form>
+</div>
