@@ -1,6 +1,6 @@
 <%- layout("layouts/boilerplate.ejs")%>
 <div class="form-details">
-<form method="post" action="/results/new" enctype="multipart/form-data">
+<form method="post" action="/results/ne" enctype="multipart/form-data">
     <div class="form-inputs">
     <h1>Help fellow students by sharing authentic exam paper.</h1>
            <div>
@@ -9,17 +9,7 @@
     </div>
     <div>
         <label for="semester">Semester</label><br>
-        <select name="result[semester]" id="semester" required>
-            <option value="sem">Select Semester</option>
-            <option value="1st">1</option>
-            <option value="1st">2</option>
-            <option value="1st">3</option>
-            <option value="1st">4</option>
-            <option value="1st">5</option>
-            <option value="1st">6</option>
-            <option value="1st">7</option>
-            <option value="1st">8</option>
-        </select>
+        <input type="number" placeholder="1" name="result[semester]" id="semester" min="1" max="8" required>
     </div>
    <div>
         <label for="term">Mid/End Term</label><br>
@@ -50,7 +40,7 @@
         <input type="file" name="result[image]" id="image" class="file-input" required>
     </div>
     <div class="search-btn">
-        <button>Search</button>
+        <button>Submit</button>
     </div>
     </div>
 </form>

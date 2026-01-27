@@ -1,13 +1,14 @@
 body{
+    background-color: #9CAB84;
+    min-height: 100vh;
+    flex: 1;
     margin: 0;
     padding: 0;
     font-family: "Roboto Slab", serif;
-    background-color: #9CAB84;
+    overflow-x: hidden;
 }
 .container{
-    display: flex;
-    flex-direction: column;
-    background-color: #9CAB84;
+    padding-top: 40px;
     min-height: 100vh;
     flex: 1;
 }
@@ -196,6 +197,9 @@ body{
 .footer-container a{
     text-decoration: none;
     color: #36656B;
+}
+.footer-container h2{
+    opacity: 0.7;
 }
 .footer-container span i{
     font-size: 20px;
