@@ -11,7 +11,7 @@ const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
     folder: 'previousPapers',
-    allowedFormate:["pnj","jpeg","jpg","pdf"],
+    allowedFormate:["pnj","jpeg","jpg"],
   },
 });
 
