@@ -17,7 +17,7 @@ const dataSchema=new mongoose.Schema({
         type:String,
         required:true,
     },
-    subject:{
+    subjectCode:{
         type:String,
         required:true,
     },

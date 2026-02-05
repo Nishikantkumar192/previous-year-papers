@@ -27,7 +27,7 @@ router.post("/search",isLoggedIn,async(req,res,next)=>{
         semester:result.semester,
         term:result.term,
         branch:result.branch,
-        subject:result.subject
+        subjectCode:result.subjectCode
     })
     if(!matchData){
         return next(new ExpressError(404,"Sorry this is paper is unavailable if you have then please upload"));
