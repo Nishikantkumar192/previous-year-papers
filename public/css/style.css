@@ -1,13 +1,9 @@
 body{
-    background-color: #9CAB84;
-    min-height: 100vh;
-    flex: 1;
     margin: 0;
     padding: 0;
-    font-family: "Roboto Slab", serif;
-    overflow-x: hidden;
 }
 .container{
+    background-color: #9CAB84;
     min-height: 100vh;
     flex: 1;
 }
@@ -123,11 +119,12 @@ body{
     position: sticky;
     top: 0;
 }
-.navbar .hamburger{
+.navbar .hamburger,.crossSign{
     display:none;
-    margin-top:20px;
     padding:1rem;
     font-size:25px;
+    position: fixed;
+    right: 20px;
 }
 .logo-name{
     display: flex;

@@ -9,14 +9,18 @@
     </div>
     <div>
         <label for="semester">Semester</label><br>
-        <input type="number" placeholder="1" name="result[semester]" id="semester" min="1" max="8" required>
+        <select name="result[semester]" id="semester" required>
+            <option value="select">Select Semester</option>
+            <option value="1">(Jan-June)</option>
+            <option value="2">(July-Dec)</option>
+        </select>
     </div>
     <div>
         <label for="term">Mid/End Term</label><br>
         <select name="result[term]" id="term" required>
             <option value="">Select Term</option>
-            <option value="mid">mid</option>
-            <option value="end">end</option>
+            <option value="mid">Mid Term</option>
+            <option value="end">End Term</option>
         </select>
     </div>
     <div>

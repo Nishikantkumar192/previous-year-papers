@@ -3,7 +3,7 @@ if(process.env.NODE_ENV != "production"){
 }
 const express=require("express");
 const app=express();
-const port=8080;
+const port=process.env.PORT || 8080;
 const engine=require("ejs-mate");
 const path=require("path");
 const User=require("./model/user.js");
@@ -16,7 +16,6 @@ const passport=require("passport");
 const LocalStrategy=require("passport-local");
 const flash=require("connect-flash");
 
-// const MONGO_URL='mongodb://127.0.0.1:27017/previousYear';
 const dbUrl=process.env.MONGODB_URL;
 main().then(()=>{
     console.log("connected Successfully");
@@ -57,6 +56,7 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
 app.listen(port,()=>{
     console.log(`app is listing through port ${port}`);
 })
