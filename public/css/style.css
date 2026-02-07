@@ -111,103 +111,39 @@ body{
     padding: 2rem;
     border: 2px solid seagreen;
 }
-/* navbar and footer styling */
-.navbar{
-    display: flex;
-    justify-content: space-between;
-    background-color: #F6F0D7;
-    position: sticky;
-    top: 0;
+.objective{
+    padding: 1rem;
+    margin: 1rem;
+    line-height: 25px;
 }
-.navbar .hamburger,.crossSign{
-    display:none;
-    padding:1rem;
-    font-size:25px;
-    position: fixed;
-    right: 20px;
+.How-to-use{
+    padding: 1rem;
+    margin: 3rem;
+    border-radius: 16px;
+    background-color: #8F9F73 ;
+
 }
-.logo-name{
+.How-to-use h2{
+    color: #492828;
+    margin-bottom: 0;
+}
+.steps{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 1rem;
-    padding: 0.3rem;
+    flex-wrap: wrap;
 }
-
-.logo-name p{
-    margin: 0;
+.step span{
     font-weight: 500;
+    color: #5A3E2B;
 }
-.logo-name p a{
-    text-decoration: none;
-    color: black;
-}
-.logo-name p a:hover{
-    text-decoration: underline;
-}
-.image img{
-    height: 65px;
-    margin-right: 10px;
-    opacity: 0.7;
-    border-radius: 50%;
-}
-.options{
-    display: flex;
+.step{
+    box-shadow: 5px 4px 13px 0 black;
     padding: 1rem;
+    margin: 20px;
+    border-radius: 10px;
+    width: 300px;
 }
-.option{
-    margin: 5px;
-}
-
-.option a{
-    margin: 5px;
-    font-size: 19px;
-    color: black;
-    text-decoration: none;
-    opacity: 0.7;
-}
-.option a:hover{
-    opacity: 1;
-}
-@media (max-width:1040px) {
-    .navbar .options{
-        display: none;
-    }
-    .portal-btn{
-        display: flex;
-        flex-direction: column;
-    }
-    .navbar .hamburger{
-        display:block;
-    }
-}
-@media (max-width:800px) {
-    .footer-container .contribution{
-        display: none;
-    }
-}
-@media (max-width:350px) {
-    .footer-container{
-        display:flex;
-        flex-direction: column;
-        align-items: center;
-    }
-}
-.footer-container{
-    display: flex;
-    justify-content: space-around;
-    background-color: #f0f8a4ce;
-    padding: 50px 0;
-}
-.footer-container a{
-    text-decoration: none;
-    color: #36656B;
-}
-.footer-container h2{
-    opacity: 0.7;
-}
-.footer-container span i{
-    font-size: 20px;
-    padding: 5px;
-    margin-right: 10px;
+.useCaseHeading{
+    margin: 0;
 }

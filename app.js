@@ -16,6 +16,12 @@ const passport=require("passport");
 const LocalStrategy=require("passport-local");
 const flash=require("connect-flash");
 
+app.use(express.static(path.join(__dirname,"public")));
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+app.engine("ejs",engine);
+app.set("view engine","ejs");
+
 const dbUrl=process.env.MONGODB_URL;
 main().then(()=>{
     console.log("connected Successfully");
@@ -25,12 +31,6 @@ main().then(()=>{
 async function main(){
     await mongoose.connect(dbUrl);
 }
-
-app.use(express.static(path.join(__dirname,"public")));
-app.use(express.urlencoded({extended:true}));
-app.use(express.json());
-app.engine("ejs",engine);
-app.set("view engine","ejs");
 
 const sessionOption={
     secret:process.env.SESSION_SECRET,

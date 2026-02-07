@@ -1,40 +1,4 @@
-.objective{
-    padding: 1rem;
-    margin: 1rem;
-    line-height: 25px;
-}
-.How-to-use{
-    padding: 1rem;
-    margin: 3rem;
-    border-radius: 16px;
-    background-color: #8F9F73 ;
 
-}
-.How-to-use h2{
-    color: #492828;
-    margin-bottom: 0;
-}
-.steps{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-.step span{
-    font-weight: 500;
-    color: #5A3E2B;
-}
-.step{
-    border: 1px solid black;
-    padding: 1rem;
-    margin: 20px;
-    border-radius: 10px;
-    width: 300px;
-    box-shadow: 0 0 4px 0 black;
-}
-.useCaseHeading{
-    margin: 0;
-}
 /* Form style */
 .form-details{
     display: flex;

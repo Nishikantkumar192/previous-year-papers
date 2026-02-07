@@ -1,15 +1,16 @@
-let options=document.querySelector(".options");
-let navbar=document.querySelector(".navbar");
+const options=document.querySelector(".options");
+const navbar=document.querySelector(".navbar");
 
-let hamburger=document.querySelector(".hamburger");
+const hamburger=document.querySelector(".hamburger");
 hamburger.addEventListener("click",()=>{
     navbar.style.display="flex";
     navbar.style.flexDirection="column";
+    navbar.style.alignItems="start";
     options.style.display="block";
     hamburger.style.display="none";
     crossSign.style.display="block";
 })
-let crossSign=document.querySelector(".crossSign");
+const crossSign=document.querySelector(".crossSign");
 crossSign.addEventListener("click",()=>{
     navbar.style.display="flex";
     navbar.style.flexDirection="row";

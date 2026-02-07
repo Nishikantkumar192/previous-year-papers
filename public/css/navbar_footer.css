@@ -1,0 +1,100 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    background-color: #F6F0D7;
+    position: sticky;
+    top: 0;
+}
+.navbar .hamburger,.crossSign{
+    display:none;
+    padding:1rem;
+    font-size:25px;
+    position: fixed;
+    right: 20px;
+}
+.logo-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0.75rem;
+    padding: 0.3rem;
+}
+
+.logo-name p{
+    margin: 0;
+    font-weight: 500;
+}
+.logo-name p a{
+    text-decoration: none;
+    color: black;
+}
+.logo-name p a:hover{
+    text-decoration: underline;
+}
+.image img{
+    height: 65px;
+    margin-right: 10px;
+    opacity: 0.7;
+    border-radius: 50%;
+}
+.options{
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}
+.option{
+    margin: 5px;
+}
+
+.option a{
+    margin: 5px;
+    font-size: 19px;
+    color: black;
+    text-decoration: none;
+    opacity: 0.7;
+}
+.option a:hover{
+    opacity: 1;
+}
+@media (max-width:1040px) {
+    .navbar .options{
+        display: none;
+    }
+    .portal-btn{
+        display: flex;
+        flex-direction: column;
+    }
+    .navbar .hamburger{
+        display:block;
+    }
+}
+@media (max-width:800px) {
+    .footer-container .contribution{
+        display: none;
+    }
+}
+@media (max-width:350px) {
+    .footer-container{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+.footer-container{
+    display: flex;
+    justify-content: space-around;
+    background-color: #f0f8a4ce;
+    padding: 50px 0;
+}
+.footer-container a{
+    text-decoration: none;
+    color: #36656B;
+}
+.footer-container h2{
+    opacity: 0.7;
+}
+.footer-container span i{
+    font-size: 20px;
+    padding: 5px;
+    margin-right: 10px;
+}
