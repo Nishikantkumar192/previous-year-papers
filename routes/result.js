@@ -6,9 +6,6 @@ const upload=multer({storage});
 const Data=require("../model/paperData.js");
 const ExpressError=require("../utils/ExpressError.js");
 const {isLoggedIn}=require("../middleware.js");
-const path=require("path");
-const fs=require("fs");
-const {fileTypeFromFile}=require("file-type");
 
 router.get("/",(req,res)=>{
     res.render("Home/index.ejs");
