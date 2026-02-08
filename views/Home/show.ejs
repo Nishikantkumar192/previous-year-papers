@@ -1,6 +1,7 @@
-<embed
-  src="<%=matchData.image.url%>"
-  width="100%"
-  height="100%"
-  frameborder="0"
-  style="border:none;">
+<%layout("layouts/boilerplate.ejs")-%>
+<div class="paper">
+  <div class="imgUrl">
+    <h1>You can click and get the pdf</h1>
+    <a target="_blank" href="<%=matchData.image.url%>">Click Here</a>
+  </div>
+</div>

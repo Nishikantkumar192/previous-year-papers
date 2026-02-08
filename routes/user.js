@@ -2,6 +2,8 @@ const express=require("express");
 const router=express.Router();
 const passport=require("passport");
 const User=require("../model/user.js");
+const ExpressError=require("../utils/ExpressError.js");
+const {body,validationResult}=require("express-validator");
 
 router.get("/login",(req,res)=>{
     res.render("user/login.ejs");
@@ -16,7 +18,16 @@ router.get("/signup",(req,res)=>{
     res.render("user/signup");
 })
 
-router.post("/signup",async(req,res)=>{
+router.post("/signup",[
+    body("username","Username must be greater than 5 character").isLength({min:5}),
+    body("email","The formate of Email is Not correct").isEmail(),
+    body("password","Password must be greater than 5 character").isLength({min:5}),
+],async(req,res,next)=>{
+    const error=validationResult(req);
+    if(!error.isEmpty()){
+        const errMsg=error.array().map(err=>err.msg).join(",");
+        return next(new ExpressError(400,errMsg));
+    }
    try{
         let {username,email,password}=req.body;
         const newUser=new User({username,email});

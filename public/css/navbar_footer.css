@@ -7,14 +7,17 @@
 }
 .navbar .hamburger,.crossSign{
     display:none;
-    padding:1rem;
+    padding:0.5rem;
     font-size:25px;
-    position: fixed;
-    right: 20px;
+    margin-right: 10px;
+}
+.nav_leftPart{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .logo-name{
     display: flex;
-    justify-content: center;
     align-items: center;
     margin-left: 0.75rem;
     padding: 0.3rem;
@@ -59,6 +62,9 @@
 @media (max-width:1040px) {
     .navbar .options{
         display: none;
+    }
+    .navbar .nav_leftPart{
+        width: 100%;
     }
     .portal-btn{
         display: flex;
