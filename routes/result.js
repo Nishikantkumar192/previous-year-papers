@@ -21,6 +21,7 @@ router.post("/search",isLoggedIn,async(req,res,next)=>{
         year:Number(req.body.result.year),
         semester:Number(req.body.result.semester),
     }
+    result.subjectCode=result.subjectCode.trim().toLowerCase();
     const matchData=await Data.findOne({
         year:result.year,
         semester:result.semester,
@@ -46,6 +47,7 @@ router.post("/new",isLoggedIn,upload.single("result[image]"),async(req,res)=>{
         year:Number(req.body.result.year),
         semester:Number(req.body.result.semester),
     })
+    newData.subjectCode=newData.subjectCode.trim().toLowerCase();
     newData.image={url,filename};
     await newData.save();
     res.redirect("/results/new");

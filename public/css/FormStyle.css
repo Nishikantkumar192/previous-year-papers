@@ -3,12 +3,13 @@
 .form-details{
     display: flex;
     justify-content: center;
+    padding:2rem;
 }
 .form-details h1{
     padding:0 1rem;
 }
 .form-inputs{
-    background-color:#ececec65;
+    background-color:rgba(220, 220, 220, 0.552);
     border: 1px solid #492828;
     padding: 3rem 0;
     border-radius: 32px;
@@ -25,19 +26,20 @@
     outline: none;
     border: none;
 }
-.form-details input:focus{
+.form-details input:focus,select:focus{
     box-shadow: 0 0 7px 0 black;
 }
-.form-details select:focus{
-    box-shadow: 0 0 7px 0 black;
-}
+
 .search-btn button{
     width: 150px;
     height: 30px;
     border-radius: 5px;
     border: none;
-    background-color: rgb(4, 51, 4);
+    background-color: rgba(4, 51, 4, 0.802);
     color: white;
     font-size: 1rem;    
     cursor: pointer;
+}
+.search-btn button:hover{
+    background-color: rgb(4, 51, 4);
 }

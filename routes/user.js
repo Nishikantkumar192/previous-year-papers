@@ -4,6 +4,7 @@ const passport=require("passport");
 const User=require("../model/user.js");
 const ExpressError=require("../utils/ExpressError.js");
 const {body,validationResult}=require("express-validator");
+const Data = require("../model/paperData.js");
 
 router.get("/login",(req,res)=>{
     res.render("user/login.ejs");
@@ -30,10 +31,16 @@ router.post("/signup",[
     }
    try{
         let {username,email,password}=req.body;
-        const newUser=new User({username,email});
+        let newUser=await User.findOne({email});
+        if(newUser){
+            return next(new ExpressError(409,"Email already exists. Registration is not allowed with the same email."))
+        }
+        newUser=new User({username,email});
         await User.register(newUser,password);
+        
         res.redirect("/results");
    }catch(e){
+    console.log(e);
     res.redirect("/signup");
    }
 })

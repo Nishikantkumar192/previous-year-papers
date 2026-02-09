@@ -27,5 +27,17 @@ const dataSchema=new mongoose.Schema({
     }
 })
 
+//if any of the information is different then it will treat this as unique;
+dataSchema.index(
+    {
+    year:Number,
+    semester:Number,
+    term:String,
+    brach:String,
+    subjectCode:String,
+    },
+    {unique:true}
+);
+
 const Data=mongoose.model("Data",dataSchema);
 module.exports=Data;
