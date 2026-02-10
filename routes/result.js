@@ -5,7 +5,7 @@ const {storage}=require("../cloudConfig.js");
 const upload=multer({storage});
 const Data=require("../model/paperData.js");
 const ExpressError=require("../utils/ExpressError.js");
-const {isLoggedIn}=require("../middleware.js");
+const {isLoggedIn,isAdmin}=require("../middleware.js");
 
 router.get("/",(req,res)=>{
     res.render("Home/index.ejs");
@@ -39,18 +39,25 @@ router.get("/new",(req,res)=>{
     res.render("Home/new.ejs");
 })
 
-router.post("/new",isLoggedIn,upload.single("result[image]"),async(req,res)=>{
-    let url=req.file.path;
-    let filename=req.file.filename;
-    const newData=new Data({
-        ...req.body.result,
-        year:Number(req.body.result.year),
-        semester:Number(req.body.result.semester),
-    })
-    newData.subjectCode=newData.subjectCode.trim().toLowerCase();
-    newData.image={url,filename};
-    await newData.save();
-    res.redirect("/results/new");
+router.post("/new",isLoggedIn,isAdmin,upload.single("result[image]"),async(req,res)=>{
+    try{
+        let url=req.file.path;
+        let filename=req.file.filename;
+        const newData=new Data({
+            ...req.body.result,
+            year:Number(req.body.result.year),
+            semester:Number(req.body.result.semester),
+        })
+        newData.subjectCode=newData.subjectCode.trim().toLowerCase();
+        newData.image={url,filename};
+        await newData.save();
+        res.redirect("/results/new");
+    }catch(err){
+        if(err.code===11000){
+            return next(new ExpressError(409,"Duplicate entries are not allowed"));
+        }
+        res.redirect("/results");
+    }
 })
 
 router.get("/back",(req,res)=>{

@@ -9,6 +9,7 @@ const path=require("path");
 const User=require("./model/user.js");
 const resultRouter = require("./routes/result");
 const userRouter=require("./routes/user");
+const adminRouter=require("./routes/admin");
 const joiSchema=require("./joiSchema");
 const mongoose=require("mongoose");
 const session=require("express-session");
@@ -67,6 +68,7 @@ app.get("/",(req,res)=>{
 
 app.use("/results",resultRouter);
 app.use("/",userRouter);
+app.use("/admin",adminRouter);
 
 app.use((req,res,next)=>{
     next(new ExpressError(500,"Page Not Found"));

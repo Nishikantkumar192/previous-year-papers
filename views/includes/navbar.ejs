@@ -23,10 +23,16 @@
         </div>
         <div class="options">
             <div class="option"><a href="/results">Home</a></div>
+            <% if(currUser && currUser.isSuperAdmin===true){%>
+                <div class="option"><a href="/admin/ListOfAdmin">show-Admin's</a></div>
+            <%}%>
             <%if(!currUser){%>
                 <div class="option"><a href="/signup">Sign-Up</a></div>
                 <div class="option"><a href="/login">Login</a></div>
-            <%}else{%>
+            <%}else if(currUser && currUser.role==="admin"){%>
+                <div class="option"><a href="/">Admin</a></div>
+                <div class="option"><a href="/logout">Logout</a></div>
+            <%}else if(currUser){%>
                 <div class="option"><a href="/logout">Logout</a></div>
             <%}%>
         </div>
