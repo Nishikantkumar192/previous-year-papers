@@ -1,0 +1,28 @@
+.card-collection{
+    text-align: center;
+
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    background-color: rgba(0, 255, 255, 0.759);
+    height: 18rem;
+    width: 16rem;
+    margin:1rem;
+    margin-top: 0;
+}
+.card-option{
+    padding: 1rem;
+}
+.card:hover{
+    opacity: 0.85;
+}
+.card-collection a{
+    text-decoration: none;
+    line-height: 20px;
+    color: black;
+    display: inline-block;
+    flex-wrap: wrap;
+    padding-top: 1rem;
+}

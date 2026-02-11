@@ -1,2 +1,14 @@
 <% layout("layouts/boilerplate.ejs")%>
-<p><% AdminList%></p>
+<div class="card-collection">
+<% for(let admin of AdminList){%>
+        <a href="/admin/update/<%=admin.id%>" onclick="return confirm(`Are you sure`)">
+        <div class="card">
+            <img src="/images/admin_icon.png" alt="img">
+            <div class="card-option">
+                <span><%= admin.username%></span>
+                <span><%=admin.email%></span>
+            </div>
+        </div>
+        </a>
+<%}%>
+</div>

@@ -3,6 +3,8 @@ body{
     padding: 0;
 }
 .container{
+    display: flex;
+    flex-direction: column;
     font-family: "Roboto", sans-serif;
     background-color: #9CAB84;
     min-height: 100vh;

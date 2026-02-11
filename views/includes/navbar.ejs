@@ -31,6 +31,7 @@
                 <div class="option"><a href="/login">Login</a></div>
             <%}else if(currUser && currUser.role==="admin"){%>
                 <div class="option"><a href="/">Admin</a></div>
+                <div class="option"><a href="/admin/showUsers">show-user's</a></div>
                 <div class="option"><a href="/logout">Logout</a></div>
             <%}else if(currUser){%>
                 <div class="option"><a href="/logout">Logout</a></div>
