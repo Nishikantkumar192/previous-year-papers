@@ -2,7 +2,7 @@
 <div class="card-collection">
     <h1 style="color:maroon">You can click and change the role of Admin</h1>
 <% for(let admin of AdminList){%>
-        <a href="/admin/update/<%=admin.id%>" onclick="return confirm(`Are you sure you want to update this user's role?`)">
+        <a href="/admin/update/<%=admin.id%>" onclick="return confirm(`Are you sure you want to update this admin role?`)">
         <div class="card">
             <img src="/images/admin_icon.png" alt="img">
             <div class="card-option">

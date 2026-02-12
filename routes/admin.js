@@ -18,9 +18,11 @@ router.get("/showUsers",isLoggedIn,isAdmin,async(req,res)=>{
     const userDetails=await User.find({role:"user"});
     res.render("AdminFolder/allUser.ejs",{userDetails});
 })
-router.get("/removeUser/:id",isLoggedIn,isAdmin,async(req,res)=>{
+router.get("/changeUserRole/:id",isLoggedIn,isAdmin,async(req,res)=>{
     let {id}=req.params;
-    await User.findByIdAndDelete(id);
+    const userRole=await User.findById(id);
+    userRole.role="admin";
+    await userRole.save();
     res.redirect("/admin/showUsers");
 })
 
