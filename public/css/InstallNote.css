@@ -1,0 +1,12 @@
+.note{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+.regarding{
+    border: 2px solid maroon;
+    padding:1rem;
+    border-radius: 10px;
+    box-shadow: 1px 3px 10px 0px black;
+}

@@ -13,6 +13,7 @@ const adminRouter=require("./routes/admin");
 const joiSchema=require("./joiSchema");
 const mongoose=require("mongoose");
 const session=require("express-session");
+const {MongoStore}=require("connect-mongo");
 const passport=require("passport");
 const LocalStrategy=require("passport-local");
 const flash=require("connect-flash");
@@ -33,7 +34,16 @@ async function main(){
     await mongoose.connect(dbUrl);
 }
 
+const store=MongoStore.create({
+    mongoUrl: dbUrl,
+    crypto : {
+        secret:process.env.SESSION_SECRET,
+    },
+    touchAfter:24*60*60,
+})
+
 const sessionOption={
+    store,
     secret:process.env.SESSION_SECRET,
     resave:false,
     saveUninitialized: false,
