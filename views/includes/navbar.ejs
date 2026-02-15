@@ -27,8 +27,8 @@
                 <div class="option"><a href="/admin/ListOfAdmin">show-Admin's</a></div>
             <%}%>
             <%if(!currUser){%>
-                <div class="option"><a href="/signup">Sign-Up</a></div>
-                <div class="option"><a href="/login">Login</a></div>
+                <div class="option"><a href="/signup">Sign-up</a></div>
+                <div class="option"><a href="/login">Log-in</a></div>
             <%}else if(currUser && currUser.role==="admin"){%>
                 <div class="option"><a href="/admin/showUsers">show-user's</a></div>
                 <div class="option"><a href="/logout">Logout</a></div>

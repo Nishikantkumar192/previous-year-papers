@@ -9,7 +9,6 @@ body{
     background-color: #9CAB84;
     min-height: 100vh;
     flex: 1;
-    overflow: hidden;
 }
 .info{
     display: flex;

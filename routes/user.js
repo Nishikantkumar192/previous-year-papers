@@ -4,7 +4,6 @@ const passport=require("passport");
 const User=require("../model/user.js");
 const ExpressError=require("../utils/ExpressError.js");
 const {body,validationResult}=require("express-validator");
-const Data = require("../model/paperData.js");
 
 router.get("/login",(req,res)=>{
     res.render("user/login.ejs");

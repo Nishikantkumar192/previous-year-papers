@@ -18,3 +18,7 @@ crossSign.addEventListener("click",()=>{
     hamburger.style.display="block";
     crossSign.style.display="none";
 })
+
+setTimeout(()=>{
+    document.getElementById("note").style.display="none";
+},60000)

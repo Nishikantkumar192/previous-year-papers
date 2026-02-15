@@ -53,9 +53,6 @@ router.post("/new",isLoggedIn,isAdmin,upload.single("result[image]"),async(req,r
         await newData.save();
         res.redirect("/results/new");
     }catch(err){
-        if(err.code===11000){
-            return next(new ExpressError(409,"Duplicate entries are not allowed"));
-        }
         res.redirect("/results");
     }
 })

@@ -1,19 +1,18 @@
 <%- layout("layouts/boilerplate.ejs")%>
 <div class="form-details">
 <form method="post" action="/login">
-    <h1>Log in to access previous year question papers</h1>
+    <h1>Log-in to access question papers</h1>
     <div class="form-inputs">
         <div>
-        <label for="username">Username</label><br>
-        <input type="text" placeholder="username" name="username" id="username" required>
-    </div>
-    <div>
-        <label for="password">Password</label><br>
-        <input type="password" placeholder="password" name="password" id="password" required>
-    </div>
-    <div class="search-btn">
-        <button>Login</button>
-    </div>
+            <input type="text" placeholder="username" name="username" id="username" required>
+        </div>
+        <div>
+            <input type="password" placeholder="password" name="password" id="password" required>
+        </div>
+        <div class="search-btn">
+            <button style="display: inline-block;">Login</button>
+        </div>
+        <div style="margin-top: 10px;"><a href="/signup">Sign-up</a></div>
     </div>
 </form>
 </div>
