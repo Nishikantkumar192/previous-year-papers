@@ -16,7 +16,7 @@ module.exports.isAdmin=(req,res,next)=>{
 module.exports.isSuperAdmin=async(req,res,next)=>{
     let user=await User.findOne({isSuperAdmin:true});
     if(!user){
-        next(new ExpressError(403,"Permission Denied"));
+        return next(new ExpressError(403,"Permission Denied"));
     }
     next();
 }

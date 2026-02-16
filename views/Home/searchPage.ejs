@@ -1,30 +1,32 @@
 <%- layout("layouts/boilerplate.ejs")%>
 <div class="form-details">
 <form method="post" action="/results/search">
-    <h1>Ensure inputs match the given format for correct results.</h1>
+    <h1>Ensure inputs match the given format.</h1>
     <div class="form-inputs">
            <div>
-        <label for="year">Year</label><br>
         <input type="number" placeholder="2025" name="result[year]" id="year" required>
     </div>
     <div>
-        <label for="semester">Semester</label><br>
         <select name="result[semester]" id="semester" required>
             <option value="select">Select Semester</option>
-            <option value="1">(Jan-June)</option>
-            <option value="2">(July-Dec)</option>
+            <option value="1">1st semester</option>
+            <option value="2">2nd semester</option>
+            <option value="3">3rd semester</option>
+            <option value="4">4th semester</option>
+            <option value="5">5th semester</option>
+            <option value="6">6th semester</option>
+            <option value="7">7th semester</option>
+            <option value="8">8th semester</option>
         </select>
     </div>
     <div>
-        <label for="term">Mid/End Term</label><br>
         <select name="result[term]" id="term" required>
-            <option value="">Select Term</option>
-            <option value="mid">Mid Term</option>
-            <option value="end">End Term</option>
+            <option value="">Select semester</option>
+            <option value="mid">Mid semester</option>
+            <option value="end">End semester</option>
         </select>
     </div>
     <div>
-        <label for="branch">Branch</label><br>
         <select name="result[branch]" id="branch">
             <option value="">Select Your Branch</option>
             <option value="CSE">CSE</option>
@@ -36,8 +38,7 @@
         </select>
     </div>
     <div class="div">
-        <label for="subjectCode">SubjectCode</label><br>
-        <input type="text" placeholder="BS-2101" name="result[subjectCode]" id="subjectCode" required>
+        <input type="text" placeholder="BS-2101 / bs-2101" name="result[subjectCode]" id="subjectCode" required>
     </div>
     <div class="search-btn">
         <button>Search</button>
