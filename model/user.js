@@ -15,7 +15,9 @@ const userSchema=new mongoose.Schema({
     isSuperAdmin:{
         type:Boolean,
         default:false,
-    }
+    },
+    resetOtp:{type:String,default:''},
+    resetOtpExpireAt:{type:Number,default:0},
 })
 
 userSchema.plugin(passportLocalMongoose);

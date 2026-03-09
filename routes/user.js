@@ -3,6 +3,7 @@ const router=express.Router();
 const passport=require("passport");
 const User=require("../model/user.js");
 const ExpressError=require("../utils/ExpressError.js");
+const transporter=require("../config/nodemailer.js")
 const {body,validationResult}=require("express-validator");
 
 router.get("/login",(req,res)=>{
@@ -41,6 +42,36 @@ router.post("/signup",[
     console.log(e);
     res.redirect("/signup");
    }
+})
+router.get("/forget",(req,res)=>{
+    res.render("user/passwordReset.ejs");
+})
+
+router.post("/forget",async(req,res)=>{
+    const {email}=req.body
+    try{
+        if(!email){
+            return new ExpressError(400,"Invalid Email");
+        }
+        const user=await User.findOne({email});
+        if(!user){
+            return new ExpressError(400,"Invalid Email");
+        }
+        const otp=String(Math.floor(100000+Math.random()*900000));
+        user.resetOtp=otp;
+        user.resetOtpExpireAt=Date.now()+5*60*1000;
+        const sendOtp={
+            from:process.env.SENDER_EMAIL,
+            to:email,
+            subject:"Reset Password OTP",
+            text:`Your OTP for resetting your password is: ${otp} .This OTP is valid for 5 minutes. Do not share it with anyone.`
+        }
+        await transporter.sendMail(sendOtp);
+        await user.save();
+        res.render("/forget");
+    }catch(err){
+        return new ExpressError(500,err.message);
+    }
 })
 router.get("/logout",(req,res)=>{
     req.logout((err)=>{
