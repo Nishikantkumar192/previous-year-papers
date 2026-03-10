@@ -47,30 +47,47 @@ router.get("/forget",(req,res)=>{
     res.render("user/passwordReset.ejs");
 })
 
-router.post("/forget",async(req,res)=>{
-    const {email}=req.body
+router.post("/forget",async(req,res,next)=>{
+    const {email}=req.body;
     try{
         if(!email){
-            return new ExpressError(400,"Invalid Email");
+            return next(new ExpressError(400,"Invalid Email"));
         }
         const user=await User.findOne({email});
         if(!user){
-            return new ExpressError(400,"Invalid Email");
+            return next(new ExpressError(400,"Invalid Email"));
         }
         const otp=String(Math.floor(100000+Math.random()*900000));
         user.resetOtp=otp;
         user.resetOtpExpireAt=Date.now()+5*60*1000;
-        const sendOtp={
+        const emailSend={
             from:process.env.SENDER_EMAIL,
             to:email,
             subject:"Reset Password OTP",
             text:`Your OTP for resetting your password is: ${otp} .This OTP is valid for 5 minutes. Do not share it with anyone.`
         }
-        await transporter.sendMail(sendOtp);
         await user.save();
-        res.render("/forget");
+        await transporter.sendMail(emailSend);
+        res.render("user/OtpVerification");
     }catch(err){
-        return new ExpressError(500,err.message);
+        return next(new ExpressError(500,err.message));
+    }
+})
+
+router.post("/otp-verification",async(req,res,next)=>{
+    const {email,otp,password}=req.body;
+    try{
+        const user=await User.findOne({email});
+        if(!user) return next(new ExpressError(400,"Invalid Email"));
+        if(otp!=user.resetOtp) return next(new ExpressError(400,"Invalid OTP"));
+        if(user.resetOtpExpireAt < Date.now()) return next(new ExpressError(400,"OTP Expired"));
+        await user.setPassword(password);
+        user.resetOtp='';
+        user.resetOtpExpireAt=0;
+        await user.save();
+        res.render("user/login.ejs");
+    }catch(err){
+        return next(new ExpressError(500,err.message));
     }
 })
 router.get("/logout",(req,res)=>{

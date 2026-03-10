@@ -58,7 +58,7 @@ router.post("/new",isLoggedIn,isAdmin,upload.single("result[image]"),async(req,r
 })
 
 router.get("/back",(req,res)=>{
-    res.redirect("/results");
+    res.redirect("/otp-verification");
 })
 
 module.exports=router;

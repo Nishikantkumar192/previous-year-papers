@@ -1,0 +1,42 @@
+<% layout("layouts/boilerplate.ejs")-%>
+
+<div class="form-details">
+  <form method="post" action="/otp-verification">
+    <h1>Verify OTP</h1>
+    <div class="form-inputs">
+      <div>
+        <label for="email">Email</label><br />
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Enter your Email"
+          required
+        />
+      </div>
+      <div>
+        <label for="otp">OTP</label><br />
+        <input
+          type="text"
+          name="otp"
+          id="otp"
+          placeholder="Enter your OTP"
+          required
+        />
+      </div>
+        <div>
+        <label for="password">password</label><br />
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Enter new password"
+          required
+        />
+      </div>
+      <div class="search-btn">
+        <button>Confirm-OTP</button>
+    </div>
+    </div>
+  </form>
+</div>

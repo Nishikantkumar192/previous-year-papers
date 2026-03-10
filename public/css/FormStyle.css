@@ -20,14 +20,14 @@
     border-radius: 16px;
     margin: 0 25px;
     max-width: 500px;
-    min-width:310px
+    min-width: 280px;
 }
 
 .form-details input,select{
     width: 70%;
     margin-bottom: 20px;
     height: 25px;
-    border-radius: 5px;
+    border-radius: 10px;
     outline: none;
     border: none;
     text-align: center;
