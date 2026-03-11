@@ -1,6 +1,0 @@
-<%layout("layouts/boilerplate.ejs")%>
-<ol>
-<% for(let user of userDetails){%>
-    <a href="/admin/changeUserRole/<%=user.id%>" onclick="return confirm(`Are you sure you want to update user role`)"><li><%=user.username%></li></a>
-<%}%>
-</ol>

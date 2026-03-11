@@ -24,7 +24,7 @@ app.use(express.json());
 app.engine("ejs",engine);
 app.set("view engine","ejs");
 
-const dbUrl=process.env.MONGODB_URL;
+const dbUrl='mongodb://127.0.0.1:27017/previousYear';
 main().then(()=>{
     console.log("connected Successfully");
 }).catch((err)=>{

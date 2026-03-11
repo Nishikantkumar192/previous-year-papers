@@ -11,11 +11,11 @@ router.get("/",(req,res)=>{
     res.render("Home/index.ejs");
 })
 
-router.get("/search",(req,res)=>{
+router.get("/search",isLoggedIn,(req,res)=>{
     res.render("Home/searchPage.ejs");
 })
 
-router.post("/search",isLoggedIn,async(req,res,next)=>{
+router.post("/search",async(req,res,next)=>{
     let result={
         ...req.body.result,
         year:Number(req.body.result.year),
@@ -58,7 +58,7 @@ router.post("/new",isLoggedIn,isAdmin,upload.single("result[image]"),async(req,r
 })
 
 router.get("/back",(req,res)=>{
-    res.redirect("/otp-verification");
+    res.redirect("/result");
 })
 
 module.exports=router;

@@ -32,18 +32,5 @@ router.get("/showUsers",isLoggedIn,isAdmin,async(req,res)=>{
         return new ExpressError(500,err.message);
     }
 })
-router.get("/changeUserRole/:id",isLoggedIn,isAdmin,async(req,res)=>{
-    try{
-        let {id}=req.params;
-        const userRole=await User.findById(id);
-        userRole.role="admin";
-        await userRole.save();
-        res.redirect("/admin/showUsers");
-    }catch(err){
-        return new ExpressError(500,err.message);
-    }
-})
-
-// TODO (Data Integrity): Implement cascading delete to remove user posts when a user is deleted
 
 module.exports=router;
