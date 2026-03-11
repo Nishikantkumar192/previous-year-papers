@@ -1,48 +1,60 @@
 <%- layout("layouts/boilerplate.ejs")%>
 <div class="form-details">
-<form method="post" action="/results/search">
+  <form method="post" action="/results/search">
     <h1>Ensure inputs match the given format.</h1>
     <div class="form-inputs">
-           <div>
-        <input type="number" placeholder="2025" name="result[year]" id="year" required>
-    </div>
-    <div>
+      <div>
+        <input
+          type="number"
+          placeholder="2025"
+          name="result[year]"
+          id="year"
+          required
+        />
+      </div>
+      <div>
         <select name="result[semester]" id="semester" required>
-            <option value="select">Select Semester</option>
-            <option value="1">1st semester</option>
-            <option value="2">2nd semester</option>
-            <option value="3">3rd semester</option>
-            <option value="4">4th semester</option>
-            <option value="5">5th semester</option>
-            <option value="6">6th semester</option>
-            <option value="7">7th semester</option>
-            <option value="8">8th semester</option>
+          <option value="select">Select Semester</option>
+          <option value="1">1st semester</option>
+          <option value="2">2nd semester</option>
+          <option value="3">3rd semester</option>
+          <option value="4">4th semester</option>
+          <option value="5">5th semester</option>
+          <option value="6">6th semester</option>
+          <option value="7">7th semester</option>
+          <option value="8">8th semester</option>
         </select>
-    </div>
-    <div>
+      </div>
+      <div>
         <select name="result[term]" id="term" required>
-            <option value="">Select semester</option>
-            <option value="mid">Mid semester</option>
-            <option value="end">End semester</option>
+          <option value="">Select semester</option>
+          <option value="mid">Mid semester</option>
+          <option value="end">End semester</option>
         </select>
-    </div>
-    <div>
+      </div>
+      <div>
         <select name="result[branch]" id="branch">
-            <option value="">Select Your Branch</option>
-            <option value="CSE">CSE</option>
-            <option value="ECE">ECE</option>
-            <option value="EE">EE</option>
-            <option value="ME">ME</option>
-            <option value="CE">CE</option>
-            <option value="BIO">BIO-TECH</option>
+          <option value="">Select Your Branch</option>
+          <option value="CSE">CSE</option>
+          <option value="ECE">ECE</option>
+          <option value="EE">EE</option>
+          <option value="ME">ME</option>
+          <option value="CE">CE</option>
+          <option value="BIO">BIO-TECH</option>
         </select>
-    </div>
-    <div class="div">
-        <input type="text" placeholder="BS-2101 / bs-2101" name="result[subjectCode]" id="subjectCode" required>
-    </div>
-    <div class="search-btn">
+      </div>
+      <div class="div">
+        <input
+          type="text"
+          placeholder="BS-2101 / bs-2101"
+          name="result[subjectCode]"
+          id="subjectCode"
+          required
+        />
+      </div>
+      <div class="search-btn">
         <button>Search</button>
+      </div>
     </div>
-    </div>
-</form>
+  </form>
 </div>

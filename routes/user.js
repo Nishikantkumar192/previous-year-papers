@@ -5,7 +5,7 @@ const User = require("../model/user.js");
 const ExpressError = require("../utils/ExpressError.js");
 const transporter = require("../config/nodemailer.js");
 const { body, validationResult } = require("express-validator");
-const { redirectUrl } = require("../middleware.js");
+const { redirectUrl, isLoggedIn } = require("../middleware.js");
 
 router.get("/login", (req, res) => {
   res.render("user/login.ejs");
@@ -78,7 +78,7 @@ router.post("/forget", async (req, res, next) => {
   try {
     const user = await User.findOne({ email });
     if (!user) {
-        return res.redirect("/forget");
+      return res.redirect("/forget");
     }
     const otp = String(Math.floor(100000 + Math.random() * 900000));
     user.resetOtp = otp;
@@ -99,7 +99,7 @@ router.post("/forget", async (req, res, next) => {
   }
 });
 
-router.post("/otp-verification", async (req, res, next) => {
+router.post("/otp-verification", async (req, res) => {
   const { email, otp, password } = req.body;
   try {
     const user = await User.findOne({ email });
@@ -107,13 +107,13 @@ router.post("/otp-verification", async (req, res, next) => {
       //todo: message by flash
       return res.redirect("/otp-verification");
     }
-    if (user.resetOtp==='' || otp != user.resetOtp) {
+    if (user.resetOtp === "" || otp != user.resetOtp) {
       //todo: message by flash
-        return res.redirect("/otp-verification");
-    };
+      return res.redirect("/otp-verification");
+    }
     if (user.resetOtpExpireAt < Date.now()) {
       //todo: message by flash
-        return res.redirect("/otp-verification");
+      return res.redirect("/otp-verification");
     }
     await user.setPassword(password);
     user.resetOtp = "";
@@ -126,7 +126,7 @@ router.post("/otp-verification", async (req, res, next) => {
     return res.redirect("/otp-verification");
   }
 });
-router.get("/logout", (req, res) => {
+router.get("/logout", isLoggedIn, (req, res) => {
   req.logout((err) => {
     if (err) {
       next(err);

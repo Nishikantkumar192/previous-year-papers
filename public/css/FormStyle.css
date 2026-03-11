@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     text-align: center;
+    margin-top: 100px;
 }
 .form-details h1{
     padding:0 1rem;

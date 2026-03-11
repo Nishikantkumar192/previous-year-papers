@@ -17,6 +17,7 @@ const {MongoStore}=require("connect-mongo");
 const passport=require("passport");
 const LocalStrategy=require("passport-local");
 const flash=require("connect-flash");
+const ExpressError=require("./utils/ExpressError.js");
 
 app.use(express.static(path.join(__dirname,"public")));
 app.use(express.urlencoded({extended:true}));
@@ -24,7 +25,7 @@ app.use(express.json());
 app.engine("ejs",engine);
 app.set("view engine","ejs");
 
-const dbUrl='mongodb://127.0.0.1:27017/previousYear';
+const dbUrl=process.env.MONGODB_URL;
 main().then(()=>{
     console.log("connected Successfully");
 }).catch((err)=>{
