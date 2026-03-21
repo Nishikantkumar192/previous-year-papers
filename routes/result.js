@@ -5,17 +5,28 @@ const {storage}=require("../cloudConfig.js");
 const upload=multer({storage});
 const Data=require("../model/paperData.js");
 const ExpressError=require("../utils/ExpressError.js");
+const wrapAsync=require("../utils/wrapAsync.js")
 const {isLoggedIn,isAdmin}=require("../middleware.js");
+const paperSchema=require("../joiSchema.js");
 
 router.get("/",(req,res)=>{
     res.render("Home/index.ejs");
 })
 
-router.get("/search",isLoggedIn,(req,res)=>{
+router.get("/search",(req,res)=>{
     res.render("Home/searchPage.ejs");
 })
 
-router.post("/search",async(req,res,next)=>{
+const validateListing=(req,res,next)=>{
+    const {error}=paperSchema.validate(req.body);
+    if(error){
+        const errMsg=error.details.map((el)=>el.message).join(",");
+        next(new ExpressError(400,errMsg));
+    }else{
+        next();
+    }
+}
+router.post("/search",isLoggedIn,validateListing,wrapAsync(async(req,res,next)=>{
     let result={
         ...req.body.result,
         year:Number(req.body.result.year),
@@ -33,14 +44,14 @@ router.post("/search",async(req,res,next)=>{
         return next(new ExpressError(404,"Sorry this is paper is unavailable if you have then please upload"));
     }
     res.render("Home/show.ejs",{matchData})
-})
+}));
 
 router.get("/new",(req,res)=>{
     res.render("Home/new.ejs");
 })
 
-router.post("/new",isLoggedIn,isAdmin,upload.single("result[image]"),async(req,res)=>{
-    try{
+router.post("/new",isLoggedIn,isAdmin,validateListing,upload.single("result[image]"),wrapAsync(async(req,res,next)=>{
+    if(!req.body.listing) return next(new ExpressError(400,"Invalid Informations"));
         let url=req.file.path;
         let filename=req.file.filename;
         const newData=new Data({
@@ -52,13 +63,6 @@ router.post("/new",isLoggedIn,isAdmin,upload.single("result[image]"),async(req,r
         newData.image={url,filename};
         await newData.save();
         res.redirect("/results/new");
-    }catch(err){
-        res.redirect("/results");
-    }
-})
-
-router.get("/back",(req,res)=>{
-    res.redirect("/result");
-})
+}));
 
 module.exports=router;

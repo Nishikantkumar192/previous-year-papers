@@ -6,6 +6,7 @@ const ExpressError = require("../utils/ExpressError.js");
 const transporter = require("../config/nodemailer.js");
 const { body, validationResult } = require("express-validator");
 const { redirectUrl, isLoggedIn } = require("../middleware.js");
+const wrapAsync = require("../utils/wrapAsync.js");
 
 router.get("/login", (req, res) => {
   res.render("user/login.ejs");
@@ -35,7 +36,7 @@ router.post(
       min: 5,
     }),
   ],
-  async (req, res, next) => {
+  wrapAsync(async (req, res, next) => {
     const error = validationResult(req);
     if (!error.isEmpty()) {
       const errMsg = error
@@ -44,7 +45,6 @@ router.post(
         .join(",");
       return next(new ExpressError(400, errMsg));
     }
-    try {
       let { username, email, password } = req.body;
       let newUser = await User.findOne({ email });
       if (newUser) {
@@ -63,22 +63,17 @@ router.post(
         }
         res.redirect("/results");
       });
-    } catch (e) {
-      console.log(e);
-      res.redirect("/signup");
-    }
   },
-);
+));
 router.get("/forget", (req, res) => {
   res.render("user/passwordReset.ejs");
 });
 
-router.post("/forget", async (req, res, next) => {
+router.post("/forget", wrapAsync(async (req, res,next) => {
   const { email } = req.body;
-  try {
     const user = await User.findOne({ email });
     if (!user) {
-      return res.redirect("/forget");
+      return next(new ExpressError(400,"Invalid Email"));
     }
     const otp = String(Math.floor(100000 + Math.random() * 900000));
     user.resetOtp = otp;
@@ -92,16 +87,10 @@ router.post("/forget", async (req, res, next) => {
     await user.save();
     await transporter.sendMail(emailSend);
     res.render("user/OtpVerification");
-  } catch (err) {
-    //todo: message by flash
-    console.log(err);
-    res.redirect("/forget");
-  }
-});
+}));
 
-router.post("/otp-verification", async (req, res) => {
+router.post("/otp-verification", wrapAsync(async (req, res) => {
   const { email, otp, password } = req.body;
-  try {
     const user = await User.findOne({ email });
     if (!user) {
       //todo: message by flash
@@ -120,12 +109,7 @@ router.post("/otp-verification", async (req, res) => {
     user.resetOtpExpireAt = 0;
     await user.save();
     res.render("user/login.ejs");
-  } catch (err) {
-    //todo: message by flash
-    console.log(err);
-    return res.redirect("/otp-verification");
-  }
-});
+}));
 router.get("/logout", isLoggedIn, (req, res) => {
   req.logout((err) => {
     if (err) {

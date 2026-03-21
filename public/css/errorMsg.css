@@ -1,0 +1,7 @@
+.errorMsg{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 310px;
+    background-color: orangered;
+}
