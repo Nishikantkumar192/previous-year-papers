@@ -10,7 +10,6 @@ const User = require("./model/user.js");
 const resultRouter = require("./routes/result");
 const userRouter = require("./routes/user");
 const adminRouter = require("./routes/admin");
-const joiSchema = require("./joiSchema");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const { MongoStore } = require("connect-mongo");
@@ -70,6 +69,7 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
   res.locals.successMsg = req.flash("success");
+  res.locals.errorMsg=req.flash("error");
   res.locals.currUser = req.user;
   next();
 });

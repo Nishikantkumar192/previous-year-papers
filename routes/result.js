@@ -26,7 +26,7 @@ const validateListing=(req,res,next)=>{
         next();
     }
 }
-router.post("/search",isLoggedIn,validateListing,wrapAsync(async(req,res,next)=>{
+router.post("/search",wrapAsync(async(req,res)=>{
     let result={
         ...req.body.result,
         year:Number(req.body.result.year),
@@ -41,9 +41,10 @@ router.post("/search",isLoggedIn,validateListing,wrapAsync(async(req,res,next)=>
         subjectCode:result.subjectCode
     })
     if(!matchData){
-        return next(new ExpressError(404,"Sorry this is paper is unavailable if you have then please upload"));
+        req.flash("error","Sorry, the paper is currently unavailable on my end. If you have access to it, kindly upload it.")
+        return res.redirect("/results/search");
     }
-    res.render("Home/show.ejs",{matchData})
+    res.render("Home/show.ejs",{matchData});
 }));
 
 router.get("/new",(req,res)=>{

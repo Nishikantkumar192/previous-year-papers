@@ -14,10 +14,10 @@ router.get("/login", (req, res) => {
 
 router.post(
   "/login",
-  redirectUrl,
-  passport.authenticate("local", { failureRedirect: "/login" }),
+  passport.authenticate("local", { failureRedirect: "/login",failureFlash:true }),
   (req, res) => {
-    res.redirect(res.locals.redirectUrl);
+    req.flash("success","Log-in Successfully");
+    res.redirect("/results");
   },
 );
 
@@ -48,12 +48,8 @@ router.post(
       let { username, email, password } = req.body;
       let newUser = await User.findOne({ email });
       if (newUser) {
-        return next(
-          new ExpressError(
-            409,
-            "Email already exists. Registration is not allowed with the same email.",
-          ),
-        );
+        req.flash("error","User registerd already.Use another Email");
+        return res.redirect("/signup");
       }
       newUser = new User({ username, email });
       const registeredUser = await User.register(newUser, password);
@@ -61,6 +57,7 @@ router.post(
         if (err) {
           return next(err);
         }
+        req.flash("success","you have registered successfully");
         res.redirect("/results");
       });
   },
@@ -69,11 +66,12 @@ router.get("/forget", (req, res) => {
   res.render("user/passwordReset.ejs");
 });
 
-router.post("/forget", wrapAsync(async (req, res,next) => {
+router.post("/forget-password", wrapAsync(async (req, res,next) => {
   const { email } = req.body;
     const user = await User.findOne({ email });
     if (!user) {
-      return next(new ExpressError(400,"Invalid Email"));
+      req.flash("error","Enter valid Email");
+      return res.redirect("/forget-password");
     }
     const otp = String(Math.floor(100000 + Math.random() * 900000));
     user.resetOtp = otp;
@@ -93,28 +91,30 @@ router.post("/otp-verification", wrapAsync(async (req, res) => {
   const { email, otp, password } = req.body;
     const user = await User.findOne({ email });
     if (!user) {
-      //todo: message by flash
-      return res.redirect("/otp-verification");
+      req.flash("error","Invalid User");
+      return res.redirect("/forget-password");
     }
     if (user.resetOtp === "" || otp != user.resetOtp) {
-      //todo: message by flash
-      return res.redirect("/otp-verification");
+      req.flash("error","Invalid OTP")
+      return res.redirect("/forget-password");
     }
     if (user.resetOtpExpireAt < Date.now()) {
-      //todo: message by flash
-      return res.redirect("/otp-verification");
+      req.flash("error","OTP Expired");
+      return res.redirect("/forget-password");
     }
     await user.setPassword(password);
     user.resetOtp = "";
     user.resetOtpExpireAt = 0;
     await user.save();
-    res.render("user/login.ejs");
+    req.flash("password changed successfully");
+    res.redirect("/login");
 }));
 router.get("/logout", isLoggedIn, (req, res) => {
   req.logout((err) => {
     if (err) {
       next(err);
     }
+    req.flash("success","Logout successfull");
     res.redirect("/results");
   });
 });

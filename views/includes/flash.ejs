@@ -1,0 +1,29 @@
+<% if (successMsg && successMsg.length) { %>
+    <div id="success-msg" style="background-color: red; text-align: center;">
+        <h1><%= successMsg %></h1>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            const msg = document.getElementById("success-msg");
+            if (msg) {
+                msg.style.display = "none";
+            }
+        }, 4000);
+    </script>
+<% } %>
+
+<% if(errorMsg && errorMsg.length){%>
+    <div id="error-msg" style="background-color:red; text-align: center;">
+        <h2><%=errorMsg%></h2>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            const msg = document.getElementById("error-msg");
+            if (msg) {
+                msg.style.display = "none";
+            }
+        }, 4000);
+    </script>
+<%}%>
