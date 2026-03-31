@@ -21,13 +21,3 @@ module.exports.isSuperAdmin=async(req,res,next)=>{
     }
     next();
 }
-
-module.exports.redirectUrl=(req,res,next)=>{
-    if(req.session.redirectUrl){
-        console.log(req.session.redirectUrl);
-        res.locals.redirectUrl=req.session.redirectUrl;
-    }else{
-        res.locals.redirectUrl="/";
-    }
-    next();
-}
