@@ -1,51 +1,69 @@
 <%- layout("layouts/boilerplate.ejs")%>
 <div class="form-details">
-<form method="post" action="/results/new" enctype="multipart/form-data">
+  <form method="post" action="/results/new" enctype="multipart/form-data">
     <div class="form-inputs">
-    <h1>Help fellow students by sharing authentic exam paper.</h1>
-           <div>
-        <input type="number" placeholder="2025" name="result[year]" id="year" required>
-    </div>
-    <div>
-        <select name="result[semester]" id="semester" required>
-            <option value="select">Select Semester</option>
-            <option value="1">1st semester</option>
-            <option value="2">2nd semester</option>
-            <option value="3">3rd semester</option>
-            <option value="4">4th semester</option>
-            <option value="5">5th semester</option>
-            <option value="6">6th semester</option>
-            <option value="7">7th semester</option>
-            <option value="8">8th semester</option>
+      <h1>Help fellow students by sharing authentic exam paper.</h1>
+      <div>
+        <input type="number" placeholder="2025" name="result[year]" required />
+      </div>
+      <div>
+        <select name="result[semester]" required>
+          <option value="select">Select Semester</option>
+          <option value="1">1st semester</option>
+          <option value="2">2nd semester</option>
+          <option value="3">3rd semester</option>
+          <option value="4">4th semester</option>
+          <option value="5">5th semester</option>
+          <option value="6">6th semester</option>
+          <option value="7">7th semester</option>
+          <option value="8">8th semester</option>
         </select>
-    </div>
-   <div>
-        <select name="result[term]" id="term" required>
-            <option value="select">Select semester</option>
-            <option value="mid">Mid semester</option>
-            <option value="end">End semester</option>
+      </div>
+      <div>
+        <select name="result[startFrom]" required>
+          <option value="jan">Jan-June</option>
+          <option value="july">July-Dec</option>
         </select>
-    </div>
-   <div>
-        <select name="result[branch]" id="branch">
-            <option value="choose">Select Your Branch</option>
-            <option value="CSE">CSE</option>
-            <option value="ECE">ECE</option>
-            <option value="EE">EE</option>
-            <option value="ME">ME</option>
-            <option value="CE">CE</option>
-            <option value="BIO">BIO-TECH</option>
+      </div>
+      <div>
+        <select name="result[term]" required>
+          <option value="select">Select semester</option>
+          <option value="mid">Mid semester</option>
+          <option value="end">End semester</option>
         </select>
-    </div>
-    <div>
-        <input type="text" placeholder="BS-2101" name="result[subjectCode]" id="subjectCode" required>
-    </div>
-    <div>
-        <input type="file" name="result[image]" id="image" class="file-input" required>
-    </div>
-    <div class="search-btn">
+      </div>
+      <div>
+        <select name="result[branch]">
+          <option value="choose">Select Your Branch</option>
+          <option value="CSE">CSE</option>
+          <option value="ECE">ECE</option>
+          <option value="EE">EE</option>
+          <option value="ME">ME</option>
+          <option value="CE">CE</option>
+          <option value="BIO">BIO-TECH</option>
+        </select>
+      </div>
+      <div>
+        <input
+          type="text"
+          placeholder="BS-2101"
+          name="result[subjectCode]"
+          id="subjectCode"
+          required
+        />
+      </div>
+<!-- no need of sending image as result[image] because in req.body file related information is not present it is in req.file-->
+      <div>
+        <input
+          type="file"
+          name="image"
+          id="image"
+          required
+        />
+      </div>
+      <div class="search-btn">
         <button>Submit</button>
+      </div>
     </div>
-    </div>
-</form>
+  </form>
 </div>

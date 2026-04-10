@@ -1,20 +1,33 @@
 <%- layout("layouts/boilerplate.ejs")%>
 <div class="form-details">
-<form method="post" action="/login">
+  <form method="post" action="/login">
     <h1>Log-in to access question papers</h1>
     <div class="form-inputs">
-        <div>
-            <input type="text" placeholder="username" name="username" required>
-        </div>
-        <div>
-            <input type="password" placeholder="password" name="password" required>
-        </div>
-        <div class="search-btn">
-            <button style="display: inline-block;">Login</button>
-        </div>
-        <div style="margin-top: 10px; margin-bottom: 5px;">Create new account?
-            <a style="color: blue; padding: 0; text-decoration: underline;" href="/signup">Sign-up</a></div>
-        <a style="color: blue; text-decoration: underline;" href="/forget-password">forget password</a>
+      <div>
+        <input type="text" placeholder="username" name="username" required />
+      </div>
+      <div>
+        <input
+          type="password"
+          placeholder="password"
+          name="password"
+          required
+        />
+      </div>
+      <div class="search-btn">
+        <button style="display: inline-block">Login</button>
+      </div>
+      <div style="margin-top: 10px; margin-bottom: 5px">
+        Create new account?
+        <a
+          style="color: blue; padding: 0; text-decoration: underline"
+          href="/signup"
+          >Sign-up</a
+        >
+      </div>
+      <a style="color: blue; text-decoration: underline" href="/forget-password"
+        >forget password</a
+      >
     </div>
-</form>
+  </form>
 </div>

@@ -1,21 +1,45 @@
 <%- layout("layouts/boilerplate.ejs")%>
 <div class="form-details">
-<form method="post" action="/signup">
+  <form method="post" action="/signup">
     <h1>Sign up to access previous year papers</h1>
     <div class="form-inputs">
-        <div>
-        <input type="text" placeholder="username" name="username" id="username" required>
-    </div>
-    <div>
-        <input type="text" placeholder="email-id" name="email" id="email" required>
-    </div>
-    <div>
-        <input type="password" placeholder="password" name="password" id="password" required>
-    </div>
-    <div class="search-btn">
+      <div>
+        <input
+          type="text"
+          placeholder="username"
+          name="username"
+          id="username"
+          required
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          placeholder="email-id"
+          name="email"
+          id="email"
+          required
+        />
+      </div>
+      <div>
+        <input
+          type="password"
+          placeholder="password"
+          name="password"
+          id="password"
+          required
+        />
+      </div>
+      <div class="search-btn">
         <button>Sign-up</button>
+      </div>
+      <div style="margin-top: 10px">
+        Already have an account?<a
+          style="color: blue; text-decoration: underline; padding: 0"
+          href="/login"
+          >Log-in</a
+        >
+      </div>
     </div>
-    <div style="margin-top: 10px;">Already have an account?<a style="color: blue; text-decoration: underline; padding: 0;" href="/login">Log-in</a></div>
-    </div>
-</form>
+  </form>
 </div>

@@ -11,7 +11,7 @@ const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
     folder: "previousPapers",
-    resource_type: "auto",   
+    resource_type: "auto",
   },
 });
 

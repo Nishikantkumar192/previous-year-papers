@@ -24,7 +24,7 @@ app.use(express.json());
 app.engine("ejs", engine);
 app.set("view engine", "ejs");
 
-const dbUrl =process.env.MONGODB_URL;
+const dbUrl = process.env.MONGODB_URL;
 main()
   .then(() => {
     console.log("connected Successfully");
@@ -69,7 +69,7 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
   res.locals.successMsg = req.flash("success");
-  res.locals.errorMsg=req.flash("error");
+  res.locals.errorMsg = req.flash("error");
   res.locals.currUser = req.user;
   next();
 });
@@ -91,5 +91,5 @@ app.use((req, res, next) => {
 });
 app.use((err, req, res, next) => {
   let { statusCode = 500, message = "Server Error" } = err;
-  res.status(statusCode).render("Home/error.ejs",{message});
+  res.status(statusCode).render("Home/error.ejs", { message });
 });

@@ -64,13 +64,11 @@ body{
     width: 200px;
     font-size: 15px;
     border: none;
+    cursor: pointer;
 }
 .home .btn button:hover{
     font-size: 17px;
-    height: 40px;
-    width: 190px;
-    margin-bottom: 20px;
-    box-shadow:6px 5px 9px 0 black;
+    box-shadow:2px 4px 20px 0 black;
 }
 .guidance{
     padding: 1rem;
