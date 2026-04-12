@@ -90,7 +90,11 @@ router.post(
     };
     await user.save();
     req.session.email = user.email;
-    await transporter.sendMail(emailSend);
+    try{
+      await transporter.sendMail(emailSend);
+    }catch(err){
+      console.log(err);
+    }
     req.flash("success", "OTP has been sent");
     res.redirect("/otp-verification");
   }),
