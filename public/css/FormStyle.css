@@ -21,13 +21,13 @@
     border-radius: 16px;
     margin: 0 25px;
     max-width: 500px;
-    min-width: 280px;
+    box-shadow: 0 0 10px 0 black;
 }
 
 .form-details input,select{
-    width: 70%;
+    width: 80%;
     margin-bottom: 20px;
-    height: 25px;
+    height: 30px;
     border-radius: 10px;
     outline: none;
     border: none;

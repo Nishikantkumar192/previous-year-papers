@@ -3,11 +3,10 @@ const router = express.Router();
 const passport = require("passport");
 const User = require("../model/user.js");
 const ExpressError = require("../utils/ExpressError.js");
+const transporter = require("../config/nodemailer.js");
 const { body, validationResult } = require("express-validator");
 const { isLoggedIn } = require("../middleware.js");
 const wrapAsync = require("../utils/wrapAsync.js");
-const { Resend } = require("resend");
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 router.get("/login", (req, res) => {
   res.render("user/login");
@@ -77,38 +76,34 @@ router.post(
     const { email } = req.body;
     const user = await User.findOne({ email });
     if (!user) {
-      req.flash("error", "Invalid Email");
+      req.status(400).flash("error", "Invalid Email");
       return res.redirect("/forget-password");
     }
     const otp = String(Math.floor(100000 + Math.random() * 900000));
     user.resetOtp = otp;
     user.resetOtpExpireAt = Date.now() + 5 * 60 * 1000;
     await user.save();
-
-    // Send email via Resend
+    req.session.email = user.email;
+    const emailSend = {
+      from: process.env.SENDER_EMAIL,
+      to: email,
+      subject: "Reset Password OTP",
+      html: `
+      <div style="font-family: Arial, sans-serif; padding: 20px;">
+        <h2 style="color: #333;">ShopEasy - Password Reset</h2>
+        <p>Your OTP code is:</p>
+        <h1 style="color: #4CAF50; letter-spacing: 5px;">${otp}</h1>
+        <p>This OTP is valid for <b>5 minutes</b>.</p>
+        <p>If you did not request this, please ignore this email.</p>
+      </div>
+    `,
+    };
     try {
-      await resend.emails.send({
-        from: "ShopEasy Support <onboarding@resend.dev>", // ✅ no domain needed
-        to: email,
-        subject: "Reset Password OTP - ShopEasy",
-        html: `
-          <div style="font-family: Arial, sans-serif; padding: 20px;">
-            <h2 style="color: #333;">ShopEasy - Password Reset</h2>
-            <p>Your OTP code is:</p>
-            <h1 style="color: #4CAF50; letter-spacing: 5px;">${otp}</h1>
-            <p>This OTP is valid for <b>5 minutes</b>.</p>
-            <p>If you did not request this, please ignore this email.</p>
-          </div>
-        `,
-      });
-      console.log("OTP sent successfully!");
+      await transporter.sendMail(emailSend);
     } catch (err) {
-      console.error("Resend error:", err);
-      req.flash("error", "Failed to send OTP. Please try again.");
+      req.flash("error", "Try again later");
       return res.redirect("/forget-password");
     }
-
-    req.session.email = user.email;
     req.flash("success", "OTP has been sent");
     res.redirect("/otp-verification");
   }),
